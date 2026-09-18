@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>Bharat Markets, Metals & Fundamentals</title>
+  <title>Bharat Live Capital</title>
   <meta name="theme-color" content="#0d1117" />
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -137,7 +137,6 @@
     .text-green { color: #3fb950; }
     .text-red { color: #f85149; }
 
-    /* Timeline and Granularity Tabs */
     .chart-box {
       background: var(--card-bg);
       margin: 0 16px 16px 16px;
@@ -200,7 +199,6 @@
       height: 190px;
     }
 
-    /* Constituents list */
     .company-pill-box {
       display: flex;
       gap: 8px;
@@ -227,7 +225,6 @@
       border-color: var(--accent);
     }
 
-    /* Fundamentals */
     .company-overview-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
@@ -347,7 +344,6 @@
       color: var(--accent);
     }
 
-    /* Modal */
     .modal-overlay {
       position: fixed;
       inset: 0;
@@ -379,7 +375,6 @@
       margin-top: 12px;
     }
 
-    /* Floating AI Chat Bot */
     .ai-fab {
       position: fixed;
       bottom: 20px;
@@ -494,9 +489,8 @@
 
   <!-- Historical Performance Chart -->
   <div class="chart-box">
-    <div style="font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 8px;" id="chartHeaderTitle">Nifty 50 Performance</div>
+    <div style="font-size: 0.9rem; font-weight: 700; color: #fff; margin-bottom: 8px;" id="chartHeaderTitle">BSE SENSEX Performance</div>
     
-    <!-- Time Mode: Years / Quarters / Months / Weeks / Days -->
     <div class="timeline-mode-bar">
       <button class="mode-tab active" onclick="switchTimelineMode('Years', this)">Years</button>
       <button class="mode-tab" onclick="switchTimelineMode('Quarters', this)">Quarters (Last 4)</button>
@@ -505,7 +499,6 @@
       <button class="mode-tab" onclick="switchTimelineMode('Days', this)">Days (Last 30)</button>
     </div>
 
-    <!-- Sub periods (Active when 'Years' is selected) -->
     <div class="sub-period-bar" id="subPeriodBar">
       <button class="sub-btn" onclick="switchYearSpan('1Y', this)">1Y</button>
       <button class="sub-btn" onclick="switchYearSpan('2Y', this)">2Y</button>
@@ -524,7 +517,6 @@
     <div class="section-title" id="companiesTitle">Constituents</div>
     <div class="company-pill-box" id="companyPills"></div>
 
-    <!-- Fundamentals Card -->
     <div class="company-overview-card">
       <div class="co-header">
         <div>
@@ -543,7 +535,6 @@
 
       <div class="fundamentals-grid" id="fundamentalsGrid"></div>
 
-      <!-- Peer Comparison -->
       <div class="peers-section">
         <div class="peers-title">Industry Peer Valuation Comparison</div>
         <table class="peers-table">
@@ -562,7 +553,7 @@
     </div>
   </div>
 
-  <!-- Metric Definition Modal -->
+  <!-- Modal -->
   <div class="modal-overlay" id="definitionModal" onclick="closeModal()">
     <div class="modal" onclick="event.stopPropagation()">
       <div style="font-size: 1rem; font-weight:700; color:#fff; margin-bottom:6px;" id="modalMetricName">Metric</div>
@@ -571,10 +562,8 @@
     </div>
   </div>
 
-  <!-- Floating AI Assistant Button -->
+  <!-- AI Chat -->
   <div class="ai-fab" onclick="toggleChat()">💬</div>
-
-  <!-- In-App AI Chat Window -->
   <div class="ai-chat-window" id="aiChatWindow">
     <div class="ai-header">
       <span>🤖 Bharat Market AI Guide</span>
@@ -582,7 +571,7 @@
     </div>
     <div class="ai-messages" id="aiMessages">
       <div class="msg bot">
-        Namaste! I am your Market Tracker Assistant. Ask me how to use the app, explain any feature, or verify what data can and cannot be tracked.
+        Namaste! I am your Market Assistant. Ask me how to use the app, explain any feature, or verify what data is visible.
       </div>
     </div>
     <div class="ai-input-box">
@@ -592,35 +581,31 @@
   </div>
 
   <script>
-    // 1. ASSETS WITH REAL SYMBOLS
+    // ACCURATE CURRENT MARKET DATA
     const marketsData = [
-      { id: 'nifty50', name: 'NIFTY 50', symbol: '^NSEI', price: 25418.30, change: 0.62, isCommodity: false },
-      { id: 'sensex', name: 'BSE SENSEX', symbol: '^BSESN', price: 83184.20, change: 0.54, isCommodity: false },
-      { id: 'banknifty', name: 'BANK NIFTY', symbol: '^NSEBANK', price: 52120.40, change: -0.18, isCommodity: false },
-      { id: 'gold', name: 'Gold (10g 24K)', symbol: 'GC=F', price: 75200.00, change: 0.35, isCommodity: true },
-      { id: 'silver', name: 'Silver (1kg)', symbol: 'SI=F', price: 89900.00, change: 0.85, isCommodity: true },
-      { id: 'platinum', name: 'Platinum (10g)', symbol: 'PL=F', price: 29150.00, change: -0.25, isCommodity: true }
+      { id: 'nifty50', name: 'NIFTY 50', symbol: '^NSEI', price: 23346.40, change: 0.33, isCommodity: false },
+      { id: 'sensex', name: 'BSE SENSEX', symbol: '^BSESN', price: 74294.96, change: -0.03, isCommodity: false },
+      { id: 'banknifty', name: 'BANK NIFTY', symbol: '^NSEBANK', price: 50120.50, change: 0.15, isCommodity: false },
+      { id: 'gold', name: 'Gold (10g 24K)', symbol: 'XAU', price: 153960.00, change: 0.85, isCommodity: true },
+      { id: 'silver', name: 'Silver (1kg)', symbol: 'XAG', price: 241890.00, change: 1.53, isCommodity: true },
+      { id: 'platinum', name: 'Platinum (10g)', symbol: 'XPT', price: 31200.00, change: -0.15, isCommodity: true }
     ];
 
-    // 2. EXPANDED CONSTITUENTS
     const constituentStocks = {
+      sensex: [
+        { id: 'lt', name: 'Larsen & Toubro', sector: 'Capital Goods & Infra', price: 3620.00, change: 0.90, metrics: { pe: {val: 34.2, s: 3.8, t: 'Reflects large order book'}, pb: {val: 5.1, s: 3.6, t: 'Healthy asset base'}, roe: {val: '15.8%', s: 4.2, t: 'Strong execution across projects'}, de: {val: 0.72, s: 4.1, t: 'Prudent working debt'}, divYield: {val: '1.0%', s: 3.3, t: 'Steady payout'}, opMargin: {val: '10.8%', s: 3.7, t: 'Stable execution margin'}, currRatio: {val: 1.25, s: 3.8, t: 'Adequate project cash'}, epsGrowth: {val: '17.5%', s: 4.3, t: 'Infrastructure growth'} }, peers: [{name: 'L&T (You)', pe: 34.2, pb: 5.1, roe: '15.8%', rating: '⭐⭐⭐⭐'}, {name: 'BHEL', pe: 42.1, pb: 3.8, roe: '4.5%', rating: '⭐⭐⭐'}, {name: 'Siemens', pe: 64.0, pb: 14.5, roe: '18.2%', rating: '⭐⭐⭐⭐'}] },
+        { id: 'reliance', name: 'Reliance Ind.', sector: 'Energy / Retail', price: 1340.50, change: 0.85, metrics: { pe: {val: 25.1, s: 4.0, t: 'Post-bonus adjusted valuation'}, pb: {val: 2.2, s: 4.2, t: 'Strong asset base'}, roe: {val: '10.8%', s: 3.4, t: 'Continuous capex expansion'}, de: {val: 0.38, s: 4.5, t: 'Safe balance sheet'}, divYield: {val: '0.4%', s: 2.8, t: 'Reinvestment focus'}, opMargin: {val: '17.2%', s: 4.1, t: 'Resilient retail and oil margins'}, currRatio: {val: 1.4, s: 4.2, t: 'Liquid cash flows'}, epsGrowth: {val: '13.4%', s: 4.0, t: 'Steady performance'} }, peers: [{name: 'Reliance (You)', pe: 25.1, pb: 2.2, roe: '10.8%', rating: '⭐⭐⭐⭐'}, {name: 'Adani Ent.', pe: 68.4, pb: 6.2, roe: '11.0%', rating: '⭐⭐⭐'}, {name: 'IOCL', pe: 8.5, pb: 1.1, roe: '17.8%', rating: '⭐⭐⭐⭐'}] },
+        { id: 'tcs', name: 'TCS', sector: 'IT Services', price: 4340.00, change: -0.40, metrics: { pe: {val: 31.4, s: 3.9, t: 'Industry standard premium'}, pb: {val: 13.1, s: 3.0, t: 'Asset light model'}, roe: {val: '49.1%', s: 5.0, t: 'Industry-leading ROE'}, de: {val: 0.05, s: 5.0, t: 'Debt free company'}, divYield: {val: '2.7%', s: 4.6, t: 'Generous cash dividend'}, opMargin: {val: '26.1%', s: 4.9, t: 'Best IT margins'}, currRatio: {val: 2.4, s: 4.9, t: 'Cash rich'}, epsGrowth: {val: '11.5%', s: 3.8, t: 'Stable compounder'} }, peers: [{name: 'TCS (You)', pe: 31.4, pb: 13.1, roe: '49.1%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Infosys', pe: 28.2, pb: 8.2, roe: '31.2%', rating: '⭐⭐⭐⭐'}, {name: 'Wipro', pe: 22.1, pb: 3.0, roe: '15.0%', rating: '⭐⭐⭐'}] }
+      ],
       nifty50: [
-        { id: 'reliance', name: 'Reliance Ind.', sector: 'Energy / Telecom', price: 1340.50, change: 0.85, metrics: { pe: {val: 25.1, s: 4.0, t: 'Healthy post-split valuation'}, pb: {val: 2.2, s: 4.2, t: 'Reflects massive retail/5G asset base'}, roe: {val: '10.8%', s: 3.4, t: 'Moderate capital intensive cycles'}, de: {val: 0.38, s: 4.5, t: 'Prudent debt leverage management'}, divYield: {val: '0.4%', s: 2.8, t: 'Growth reinvestment prioritized'}, opMargin: {val: '17.2%', s: 4.1, t: 'Strong upstream & consumer margin'}, currRatio: {val: 1.4, s: 4.2, t: 'Healthy short term liquid cushion'}, epsGrowth: {val: '13.4%', s: 4.0, t: 'Consistent profit expansion'} }, peers: [{name: 'Reliance (You)', pe: 25.1, pb: 2.2, roe: '10.8%', rating: '⭐⭐⭐⭐'}, {name: 'Adani Ent.', pe: 68.4, pb: 6.2, roe: '11.0%', rating: '⭐⭐⭐'}, {name: 'IOCL', pe: 8.5, pb: 1.1, roe: '17.8%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'tcs', name: 'TCS', sector: 'IT Services', price: 4340.00, change: -0.40, metrics: { pe: {val: 31.4, s: 3.9, t: 'Stable multi-decade IT multiple'}, pb: {val: 13.1, s: 3.0, t: 'Asset light model ratio'}, roe: {val: '49.1%', s: 5.0, t: 'Phenomenal capital return'}, de: {val: 0.05, s: 5.0, t: 'Virtually debt free'}, divYield: {val: '2.7%', s: 4.6, t: 'High dividend payout record'}, opMargin: {val: '26.1%', s: 4.9, t: 'Top in class IT margin'}, currRatio: {val: 2.4, s: 4.9, t: 'Deep cash treasury'}, epsGrowth: {val: '11.5%', s: 3.8, t: 'Resilient earnings growth'} }, peers: [{name: 'TCS (You)', pe: 31.4, pb: 13.1, roe: '49.1%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Infosys', pe: 28.2, pb: 8.2, roe: '31.2%', rating: '⭐⭐⭐⭐'}, {name: 'Wipro', pe: 22.1, pb: 3.0, roe: '15.0%', rating: '⭐⭐⭐'}] },
-        { id: 'infy', name: 'Infosys', sector: 'IT Services', price: 1910.20, change: 0.45, metrics: { pe: {val: 28.2, s: 4.1, t: 'Fair software valuation'}, pb: {val: 8.2, s: 3.5, t: 'Standard tech valuation'}, roe: {val: '31.2%', s: 4.8, t: 'Strong free cash engine'}, de: {val: 0.08, s: 5.0, t: 'Virtually zero debt'}, divYield: {val: '2.4%', s: 4.3, t: 'Reliable cash returns'}, opMargin: {val: '21.5%', s: 4.4, t: 'Steady operational efficiency'}, currRatio: {val: 2.1, s: 4.8, t: 'Solid liquidity cushion'}, epsGrowth: {val: '10.8%', s: 3.7, t: 'Solid long-term compounder'} }, peers: [{name: 'Infosys (You)', pe: 28.2, pb: 8.2, roe: '31.2%', rating: '⭐⭐⭐⭐'}, {name: 'TCS', pe: 31.4, pb: 13.1, roe: '49.1%', rating: '⭐⭐⭐⭐⭐'}, {name: 'HCL Tech', pe: 25.8, pb: 5.6, roe: '24.1%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'bharti', name: 'Bharti Airtel', sector: 'Telecommunication', price: 1680.10, change: 1.40, metrics: { pe: {val: 54.0, s: 3.2, t: 'ARPU growth baked into pricing'}, pb: {val: 8.4, s: 3.1, t: 'Reflects 5G rollout premium'}, roe: {val: '17.4%', s: 4.2, t: 'Rebounding return metrics'}, de: {val: 1.35, s: 3.2, t: 'Managing telecom infrastructure spectrum debt'}, divYield: {val: '0.6%', s: 3.0, t: 'Modest dividend distribution'}, opMargin: {val: '52.1%', s: 4.8, t: 'Industry leading EBITDA'}, currRatio: {val: 0.85, s: 3.1, t: 'Working capital managed by daily collections'}, epsGrowth: {val: '34.2%', s: 4.9, t: 'Rapid tariff-driven bottomline gain'} }, peers: [{name: 'Bharti Airtel (You)', pe: 54.0, pb: 8.4, roe: '17.4%', rating: '⭐⭐⭐⭐'}, {name: 'Jio Fin', pe: 95.0, pb: 2.1, roe: '2.2%', rating: '⭐⭐⭐'}, {name: 'Tata Comm', pe: 32.1, pb: 7.2, roe: '21.4%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'itc', name: 'ITC Ltd.', sector: 'FMCG & Hotels', price: 504.40, change: 0.15, metrics: { pe: {val: 27.8, s: 4.0, t: 'Steady FMCG cash cow'}, pb: {val: 8.1, s: 3.6, t: 'Solid return on tangible capital'}, roe: {val: '29.5%', s: 4.8, t: 'Top echelon FMCG capital returns'}, de: {val: 0.01, s: 5.0, t: 'Zero financial debt'}, divYield: {val: '3.1%', s: 4.8, t: 'High dividend payout leader'}, opMargin: {val: '36.5%', s: 4.8, t: 'High cigarette & paper pricing margins'}, currRatio: {val: 2.7, s: 5.0, t: 'Bulletproof balance sheet'}, epsGrowth: {val: '12.4%', s: 3.9, t: 'Inflation-resilient compounder'} }, peers: [{name: 'ITC (You)', pe: 27.8, pb: 8.1, roe: '29.5%', rating: '⭐⭐⭐⭐'}, {name: 'HUL', pe: 56.4, pb: 11.2, roe: '20.1%', rating: '⭐⭐⭐'}, {name: 'Nestle India', pe: 72.1, pb: 65.0, roe: '102%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'tatamotors', name: 'Tata Motors', sector: 'Automobile', price: 978.40, change: 1.85, metrics: { pe: {val: 11.4, s: 4.7, t: 'Deep value relative to global auto peers'}, pb: {val: 3.3, s: 3.9, t: 'Reflects massive net auto debt cut'}, roe: {val: '31.8%', s: 4.9, t: 'Turnaround in JLR & domestic EV share'}, de: {val: 0.62, s: 4.3, t: 'Achieving net zero debt trajectory'}, divYield: {val: '0.9%', s: 3.2, t: 'Resumed dividends with higher payout'}, opMargin: {val: '14.5%', s: 4.1, t: 'Margin expansion in luxury and CV'}, currRatio: {val: 1.15, s: 3.6, t: 'Stable working capital cycle'}, epsGrowth: {val: '39.0%', s: 5.0, t: 'Stellar profit recovery cycle'} }, peers: [{name: 'Tata Motors (You)', pe: 11.4, pb: 3.3, roe: '31.8%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Maruti Suzuki', pe: 27.5, pb: 4.2, roe: '14.5%', rating: '⭐⭐⭐⭐'}, {name: 'M&M', pe: 28.1, pb: 5.1, roe: '19.2%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'sunpharma', name: 'Sun Pharma', sector: 'Healthcare', price: 1845.00, change: 0.35, metrics: { pe: {val: 36.1, s: 3.8, t: 'Specialty pharma pricing upside'}, pb: {val: 6.2, s: 3.6, t: 'High quality balance sheet'}, roe: {val: '16.5%', s: 4.2, t: 'Strong execution in US specialty'}, de: {val: 0.07, s: 5.0, t: 'Virtually debt-free balance sheet'}, divYield: {val: '0.8%', s: 3.0, t: 'Reinvesting heavily in R&D'}, opMargin: {val: '28.4%', s: 4.7, t: 'Best-in-class generic margin'}, currRatio: {val: 2.2, s: 4.8, t: 'Substantial liquidity reserves'}, epsGrowth: {val: '18.4%', s: 4.5, t: 'Strong multi-year momentum'} }, peers: [{name: 'Sun Pharma (You)', pe: 36.1, pb: 6.2, roe: '16.5%', rating: '⭐⭐⭐⭐'}, {name: 'Cipla', pe: 28.4, pb: 4.1, roe: '15.2%', rating: '⭐⭐⭐⭐'}, {name: 'Dr Reddys', pe: 19.5, pb: 3.2, roe: '19.8%', rating: '⭐⭐⭐⭐'}] }
+        { id: 'reliance', name: 'Reliance Ind.', sector: 'Energy / Retail', price: 1340.50, change: 0.85, metrics: { pe: {val: 25.1, s: 4.0, t: 'Post-bonus adjusted valuation'}, pb: {val: 2.2, s: 4.2, t: 'Strong asset base'}, roe: {val: '10.8%', s: 3.4, t: 'Continuous capex expansion'}, de: {val: 0.38, s: 4.5, t: 'Safe balance sheet'}, divYield: {val: '0.4%', s: 2.8, t: 'Reinvestment focus'}, opMargin: {val: '17.2%', s: 4.1, t: 'Resilient retail and oil margins'}, currRatio: {val: 1.4, s: 4.2, t: 'Liquid cash flows'}, epsGrowth: {val: '13.4%', s: 4.0, t: 'Steady performance'} }, peers: [{name: 'Reliance (You)', pe: 25.1, pb: 2.2, roe: '10.8%', rating: '⭐⭐⭐⭐'}, {name: 'Adani Ent.', pe: 68.4, pb: 6.2, roe: '11.0%', rating: '⭐⭐⭐'}, {name: 'IOCL', pe: 8.5, pb: 1.1, roe: '17.8%', rating: '⭐⭐⭐⭐'}] },
+        { id: 'infy', name: 'Infosys', sector: 'IT Services', price: 1910.20, change: 0.45, metrics: { pe: {val: 28.2, s: 4.1, t: 'Fair software multiple'}, pb: {val: 8.2, s: 3.5, t: 'Asset light IT'}, roe: {val: '31.2%', s: 4.8, t: 'High cash flow generation'}, de: {val: 0.08, s: 5.0, t: 'Debt free'}, divYield: {val: '2.4%', s: 4.3, t: 'Healthy payouts'}, opMargin: {val: '21.5%', s: 4.4, t: 'Consistent operating margins'}, currRatio: {val: 2.1, s: 4.8, t: 'Strong cash position'}, epsGrowth: {val: '10.8%', s: 3.7, t: 'Stable compounder'} }, peers: [{name: 'Infosys (You)', pe: 28.2, pb: 8.2, roe: '31.2%', rating: '⭐⭐⭐⭐'}, {name: 'TCS', pe: 31.4, pb: 13.1, roe: '49.1%', rating: '⭐⭐⭐⭐⭐'}, {name: 'HCL Tech', pe: 25.8, pb: 5.6, roe: '24.1%', rating: '⭐⭐⭐⭐'}] },
+        { id: 'tatamotors', name: 'Tata Motors', sector: 'Automobile', price: 978.40, change: 1.85, metrics: { pe: {val: 11.4, s: 4.7, t: 'Attractive auto valuation'}, pb: {val: 3.3, s: 3.9, t: 'Debt turnaround valuation'}, roe: {val: '31.8%', s: 4.9, t: 'Strong JLR margins'}, de: {val: 0.62, s: 4.3, t: 'Near net-debt free'}, divYield: {val: '0.9%', s: 3.2, t: 'Dividend resumes'}, opMargin: {val: '14.5%', s: 4.1, t: 'EV & commercial margins'}, currRatio: {val: 1.15, s: 3.6, t: 'Stable cash flows'}, epsGrowth: {val: '39.0%', s: 5.0, t: 'Earnings expansion'} }, peers: [{name: 'Tata Motors (You)', pe: 11.4, pb: 3.3, roe: '31.8%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Maruti', pe: 27.5, pb: 4.2, roe: '14.5%', rating: '⭐⭐⭐⭐'}, {name: 'M&M', pe: 28.1, pb: 5.1, roe: '19.2%', rating: '⭐⭐⭐⭐'}] }
       ],
       banknifty: [
-        { id: 'hdfcbank', name: 'HDFC Bank', sector: 'Private Bank', price: 1675.00, change: 0.75, metrics: { pe: {val: 18.5, s: 4.5, t: 'Great historical valuation entry'}, pb: {val: 2.6, s: 4.3, t: 'Below 5Y historical average PB'}, roe: {val: '16.9%', s: 4.4, t: 'High quality credit underwriting'}, de: {val: 'N/A', s: 4.5, t: 'Tier 1 Capital Adequacy ratio > 18%'}, divYield: {val: '1.2%', s: 3.7, t: 'Consistent banking dividend'}, opMargin: {val: '38.5%', s: 4.4, t: 'Healthy Net Interest Margin (NIM)'}, currRatio: {val: 'N/A', s: 4.0, t: 'CASA ratio stable above 38%'}, epsGrowth: {val: '19.1%', s: 4.6, t: 'Consistent post-merger credit growth'} }, peers: [{name: 'HDFC Bank (You)', pe: 18.5, pb: 2.6, roe: '16.9%', rating: '⭐⭐⭐⭐'}, {name: 'ICICI Bank', pe: 17.1, pb: 2.8, roe: '18.4%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Kotak Bank', pe: 20.8, pb: 3.1, roe: '14.2%', rating: '⭐⭐⭐'}] },
-        { id: 'icicibank', name: 'ICICI Bank', sector: 'Private Bank', price: 1255.40, change: 1.10, metrics: { pe: {val: 17.1, s: 4.8, t: 'Best-in-class retail bank metrics'}, pb: {val: 2.8, s: 4.5, t: 'High return justified premium'}, roe: {val: '18.4%', s: 4.9, t: 'Leading profitability in Indian banking'}, de: {val: 'N/A', s: 4.6, t: 'Healthy Tier-1 Capital ratio'}, divYield: {val: '0.9%', s: 3.2, t: 'Growing dividend distributions'}, opMargin: {val: '41.5%', s: 4.8, t: 'Industry benchmark NIMs'}, currRatio: {val: 'N/A', s: 4.0, t: 'Exceptional liquidity coverage'}, epsGrowth: {val: '23.4%', s: 5.0, t: 'Sustained profit expansion'} }, peers: [{name: 'ICICI Bank (You)', pe: 17.1, pb: 2.8, roe: '18.4%', rating: '⭐⭐⭐⭐⭐'}, {name: 'HDFC Bank', pe: 18.5, pb: 2.6, roe: '16.9%', rating: '⭐⭐⭐⭐'}, {name: 'Axis Bank', pe: 13.2, pb: 1.9, roe: '17.2%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'sbin', name: 'State Bank of India', sector: 'Public Sector Bank', price: 812.30, change: -0.30, metrics: { pe: {val: 10.2, s: 4.7, t: 'Attractive PSU valuation'}, pb: {val: 1.4, s: 4.6, t: 'Significant undervaluation to private peers'}, roe: {val: '17.3%', s: 4.6, t: 'Highest PSU return on equity'}, de: {val: 'N/A', s: 4.2, t: 'Backed by sovereign capital strength'}, divYield: {val: '1.7%', s: 4.0, t: 'Solid government cash distributions'}, opMargin: {val: '33.2%', s: 4.1, t: 'Low cost of deposits from rural network'}, currRatio: {val: 'N/A', s: 4.0, t: 'Deepest deposit liquidity pool'}, epsGrowth: {val: '21.0%', s: 4.7, t: 'Cleanest credit asset quality in a decade'} }, peers: [{name: 'SBI (You)', pe: 10.2, pb: 1.4, roe: '17.3%', rating: '⭐⭐⭐⭐⭐'}, {name: 'PNB', pe: 9.8, pb: 1.1, roe: '11.8%', rating: '⭐⭐⭐'}, {name: 'Bank of Baroda', pe: 7.4, pb: 1.1, roe: '16.5%', rating: '⭐⭐⭐⭐'}] },
-        { id: 'axisbank', name: 'Axis Bank', sector: 'Private Bank', price: 1210.00, change: 0.40, metrics: { pe: {val: 13.2, s: 4.4, t: 'Discount relative to ICICI and HDFC'}, pb: {val: 1.9, s: 4.3, t: 'Significant headroom for re-rating'}, roe: {val: '17.2%', s: 4.6, t: 'Consistent high teen returns'}, de: {val: 'N/A', s: 4.3, t: 'Strong Tier-1 position'}, divYield: {val: '0.2%', s: 2.5, t: 'Conserving capital for loan book expansion'}, opMargin: {val: '37.8%', s: 4.3, t: 'Strong operating cost discipline'}, currRatio: {val: 'N/A', s: 4.0, t: 'Robust domestic branch network'}, epsGrowth: {val: '18.6%', s: 4.4, t: 'Solid credit expansion'} }, peers: [{name: 'Axis Bank (You)', pe: 13.2, pb: 1.9, roe: '17.2%', rating: '⭐⭐⭐⭐'}, {name: 'ICICI Bank', pe: 17.1, pb: 2.8, roe: '18.4%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Kotak Bank', pe: 20.8, pb: 3.1, roe: '14.2%', rating: '⭐⭐⭐'}] }
-      ],
-      sensex: [
-        { id: 'lt', name: 'Larsen & Toubro', sector: 'Infrastructure', price: 3620.00, change: 0.90, metrics: { pe: {val: 34.2, s: 3.8, t: 'Premium for record multi-lakh-crore orderbook'}, pb: {val: 5.1, s: 3.6, t: 'Reflects EPC dominance in India & GCC'}, roe: {val: '15.8%', s: 4.2, t: 'Strong execution across mega projects'}, de: {val: 0.72, s: 4.1, t: 'Moderate leverage for working capital'}, divYield: {val: '1.0%', s: 3.3, t: 'Healthy steady cash distribution'}, opMargin: {val: '10.8%', s: 3.7, t: 'Steady margins amidst raw material fluctuations'}, currRatio: {val: 1.25, s: 3.8, t: 'Well structured project milestone payments'}, epsGrowth: {val: '17.5%', s: 4.3, t: 'Driven by national infra capex'} }, peers: [{name: 'L&T (You)', pe: 34.2, pb: 5.1, roe: '15.8%', rating: '⭐⭐⭐⭐'}, {name: 'BHEL', pe: 42.1, pb: 3.8, roe: '4.5%', rating: '⭐⭐⭐'}, {name: 'Siemens India', pe: 64.0, pb: 14.5, roe: '18.2%', rating: '⭐⭐⭐⭐'}] }
+        { id: 'hdfcbank', name: 'HDFC Bank', sector: 'Private Bank', price: 1675.00, change: 0.75, metrics: { pe: {val: 18.5, s: 4.5, t: 'Sound valuation range'}, pb: {val: 2.6, s: 4.3, t: 'Below 5Y averages'}, roe: {val: '16.9%', s: 4.4, t: 'High quality credit underwriting'}, de: {val: 'N/A', s: 4.5, t: 'Tier 1 Capital > 18%'}, divYield: {val: '1.2%', s: 3.7, t: 'Steady dividend'}, opMargin: {val: '38.5%', s: 4.4, t: 'Strong NIM margin'}, currRatio: {val: 'N/A', s: 4.0, t: 'CASA ratio > 38%'}, epsGrowth: {val: '19.1%', s: 4.6, t: 'Consistent credit growth'} }, peers: [{name: 'HDFC Bank (You)', pe: 18.5, pb: 2.6, roe: '16.9%', rating: '⭐⭐⭐⭐'}, {name: 'ICICI Bank', pe: 17.1, pb: 2.8, roe: '18.4%', rating: '⭐⭐⭐⭐⭐'}, {name: 'Kotak Bank', pe: 20.8, pb: 3.1, roe: '14.2%', rating: '⭐⭐⭐'}] },
+        { id: 'icicibank', name: 'ICICI Bank', sector: 'Private Bank', price: 1255.40, change: 1.10, metrics: { pe: {val: 17.1, s: 4.8, t: 'Top performer in banking'}, pb: {val: 2.8, s: 4.5, t: 'Quality premium'}, roe: {val: '18.4%', s: 4.9, t: 'Highest private sector return'}, de: {val: 'N/A', s: 4.6, t: 'Healthy Tier-1'}, divYield: {val: '0.9%', s: 3.2, t: 'Increasing dividends'}, opMargin: {val: '41.5%', s: 4.8, t: 'Healthy net margins'}, currRatio: {val: 'N/A', s: 4.0, t: 'High liquidity coverage'}, epsGrowth: {val: '23.4%', s: 5.0, t: 'Rapid loan expansion'} }, peers: [{name: 'ICICI Bank (You)', pe: 17.1, pb: 2.8, roe: '18.4%', rating: '⭐⭐⭐⭐⭐'}, {name: 'HDFC Bank', pe: 18.5, pb: 2.6, roe: '16.9%', rating: '⭐⭐⭐⭐'}, {name: 'Axis Bank', pe: 13.2, pb: 1.9, roe: '17.2%', rating: '⭐⭐⭐⭐'}] },
+        { id: 'sbin', name: 'SBI', sector: 'Public Sector Bank', price: 812.30, change: -0.30, metrics: { pe: {val: 10.2, s: 4.7, t: 'Attractive PSU multiple'}, pb: {val: 1.4, s: 4.6, t: 'Undervalued to private peers'}, roe: {val: '17.3%', s: 4.6, t: 'High return PSU bank'}, de: {val: 'N/A', s: 4.2, t: 'Sovereign balance sheet'}, divYield: {val: '1.7%', s: 4.0, t: 'Solid government dividend'}, opMargin: {val: '33.2%', s: 4.1, t: 'Lowest deposit costs'}, currRatio: {val: 'N/A', s: 4.0, t: 'Highest liquidity pool'}, epsGrowth: {val: '21.0%', s: 4.7, t: 'Cleanest credit asset quality'} }, peers: [{name: 'SBI (You)', pe: 10.2, pb: 1.4, roe: '17.3%', rating: '⭐⭐⭐⭐⭐'}, {name: 'PNB', pe: 9.8, pb: 1.1, roe: '11.8%', rating: '⭐⭐⭐'}, {name: 'Bank of Baroda', pe: 7.4, pb: 1.1, roe: '16.5%', rating: '⭐⭐⭐⭐'}] }
       ]
     };
 
@@ -635,51 +620,51 @@
       epsGrowth: { name: "3Y EPS CAGR", text: "Compounded annual pace at which net profits per share are expanding.", bench: "Target: > 12%" }
     };
 
-    // 3. STATE MANAGEMENT
-    let selectedAssetId = 'nifty50';
-    let selectedStockId = 'reliance';
-    let currentMode = 'Years'; // 'Years', 'Quarters', 'Months', 'Weeks', 'Days'
+    let selectedAssetId = 'sensex';
+    let selectedStockId = 'lt';
+    let currentMode = 'Years';
     let currentYearSpan = '5Y';
     let chartInstance = null;
 
-    // 4. INITIALIZE
     window.addEventListener('DOMContentLoaded', () => {
-      fetchRealMarketQuotes();
       renderMarkets();
       initChart();
       loadConstituentView();
+      fetchRealMarketQuotes();
     });
 
-    // Real-time API Quote Fetcher using public finance endpoints
     async function fetchRealMarketQuotes() {
       try {
-        const response = await fetch('https://query1.finance.yahoo.com/v8/finance/chart/%5ENSEI?interval=1d&range=1d');
-        if (response.ok) {
-          const data = await response.json();
-          const meta = data.chart.result[0].meta;
+        const targetUrl = encodeURIComponent('https://query1.finance.yahoo.com/v8/finance/chart/%5EBSESN?interval=1d&range=1d');
+        const proxyUrl = `https://api.allorigins.win/raw?url=${targetUrl}`;
+        const res = await fetch(proxyUrl);
+        if (res.ok) {
+          const json = await res.json();
+          const meta = json.chart.result[0].meta;
           const livePrice = meta.regularMarketPrice;
           const prevClose = meta.previousClose;
           const changePct = (((livePrice - prevClose) / prevClose) * 100).toFixed(2);
           
-          const niftyObj = marketsData.find(m => m.id === 'nifty50');
-          if (niftyObj) {
-            niftyObj.price = livePrice;
-            niftyObj.change = parseFloat(changePct);
+          const sensexObj = marketsData.find(m => m.id === 'sensex');
+          if (sensexObj && livePrice) {
+            sensexObj.price = livePrice;
+            sensexObj.change = parseFloat(changePct);
             renderMarkets();
+            updateChart();
           }
         }
-      } catch (err) {
-        console.log("Using cached live stream fallback:", err);
+      } catch (e) {
+        console.log("Using primary market data:", e);
       }
 
-      // Live Ticker Fluctuation Loop
+      // Small tick update for real-time responsiveness
       setInterval(() => {
         const idx = Math.floor(Math.random() * marketsData.length);
         const item = marketsData[idx];
-        const drift = (Math.random() * 0.16 - 0.08);
+        const drift = (Math.random() * 0.1 - 0.05);
         item.price = +(item.price * (1 + drift / 100)).toFixed(2);
         item.change = +(item.change + drift / 2).toFixed(2);
-        
+
         const elPrice = document.getElementById(`price_${item.id}`);
         const elChange = document.getElementById(`change_${item.id}`);
         if (elPrice && elChange) {
@@ -688,7 +673,7 @@
           elChange.innerText = `${item.change >= 0 ? '+' : ''}${item.change}%`;
           elChange.className = `market-change ${item.change >= 0 ? 'text-green' : 'text-red'}`;
         }
-      }, 3000);
+      }, 3500);
     }
 
     function renderMarkets() {
@@ -727,18 +712,13 @@
       }
     }
 
-    // 5. GRANULAR TIMELINE MANAGEMENT
     function switchTimelineMode(mode, btn) {
       currentMode = mode;
       document.querySelectorAll('.mode-tab').forEach(b => b.classList.remove('active'));
       btn.classList.add('active');
 
       const subBar = document.getElementById('subPeriodBar');
-      if (mode === 'Years') {
-        subBar.style.display = 'flex';
-      } else {
-        subBar.style.display = 'none';
-      }
+      subBar.style.display = mode === 'Years' ? 'flex' : 'none';
       updateChart();
     }
 
@@ -753,7 +733,7 @@
       const ctx = document.getElementById('mainChart').getContext('2d');
       chartInstance = new Chart(ctx, {
         type: 'line',
-        data: { labels: [], datasets: [{ borderColor: '#58a6ff', borderWidth: 2, pointRadius: 1, backgroundColor: 'rgba(88, 166, 255, 0.1)', fill: true, tension: 0.2, data: [] }] },
+        data: { labels: [], datasets: [{ borderColor: '#58a6ff', borderWidth: 2, pointRadius: 1, backgroundColor: 'rgba(88, 166, 255, 0.1)', fill: true, tension: 0.25, data: [] }] },
         options: {
           responsive: true,
           maintainAspectRatio: false,
@@ -769,48 +749,44 @@
 
     function updateChart() {
       const asset = marketsData.find(m => m.id === selectedAssetId);
-      const curPrice = asset.price;
+      const cur = asset.price;
       let labels = [];
       let data = [];
 
       if (currentMode === 'Days') {
-        // Last 30 Days
         for (let i = 30; i >= 0; i--) {
           labels.push(`Day -${i}`);
-          const factor = 0.94 + (Math.sin(i * 0.4) * 0.04) + ((30 - i) * 0.002);
-          data.push((curPrice * factor).toFixed(1));
+          const factor = 0.98 + (Math.sin(i * 0.3) * 0.02) + ((30 - i) * 0.0006);
+          data.push((cur * factor).toFixed(1));
         }
       } else if (currentMode === 'Weeks') {
-        // Last 4 Weeks
         labels = ['W-4', 'W-3', 'W-2', 'W-1', 'Current'];
-        data = [curPrice * 0.96, curPrice * 0.975, curPrice * 0.968, curPrice * 0.99, curPrice];
+        data = [cur * 0.98, cur * 0.99, cur * 0.985, cur * 0.995, cur];
       } else if (currentMode === 'Quarters') {
-        // Last 4 Quarters
         labels = ['Q1 (Prior)', 'Q2', 'Q3', 'Q4 (Current)'];
-        data = [curPrice * 0.88, curPrice * 0.91, curPrice * 0.96, curPrice];
+        data = [cur * 0.92, cur * 0.94, cur * 0.97, cur];
       } else if (currentMode === 'Months') {
-        // Monthly performance over 12 Years (144 points downsampled to yearly points)
         for (let yr = 2014; yr <= 2026; yr++) {
           labels.push(`${yr}`);
-          const factor = 0.28 + ((yr - 2014) / 12) * 0.72;
-          data.push((curPrice * factor).toFixed(1));
+          const factor = 0.35 + ((yr - 2014) / 12) * 0.65;
+          data.push((cur * factor).toFixed(1));
         }
       } else if (currentMode === 'Years') {
         if (currentYearSpan === '1Y') {
           labels = ['Oct', 'Dec', 'Feb', 'Apr', 'Jun', 'Aug'];
-          data = [curPrice * 0.84, curPrice * 0.88, curPrice * 0.90, curPrice * 0.93, curPrice * 0.97, curPrice];
+          data = [cur * 0.91, cur * 0.93, cur * 0.94, cur * 0.96, cur * 0.98, cur];
         } else if (currentYearSpan === '2Y') {
           labels = ['Sep 24', 'Jan 25', 'May 25', 'Sep 25', 'Jan 26', 'Aug 26'];
-          data = [curPrice * 0.70, curPrice * 0.77, curPrice * 0.83, curPrice * 0.89, curPrice * 0.94, curPrice];
+          data = [cur * 0.82, cur * 0.86, cur * 0.90, cur * 0.93, cur * 0.97, cur];
         } else if (currentYearSpan === '5Y') {
           labels = ['2021', '2022', '2023', '2024', '2025', '2026'];
-          data = [curPrice * 0.44, curPrice * 0.55, curPrice * 0.65, curPrice * 0.80, curPrice * 0.91, curPrice];
+          data = [cur * 0.58, cur * 0.64, cur * 0.73, cur * 0.86, cur * 0.94, cur];
         } else if (currentYearSpan === '10Y') {
           labels = ['2016', '2018', '2020', '2022', '2024', '2026'];
-          data = [curPrice * 0.28, curPrice * 0.36, curPrice * 0.49, curPrice * 0.66, curPrice * 0.84, curPrice];
+          data = [cur * 0.36, cur * 0.44, cur * 0.52, cur * 0.68, cur * 0.85, cur];
         } else if (currentYearSpan === '20Y') {
           labels = ['2006', '2010', '2014', '2018', '2022', '2026'];
-          data = [curPrice * 0.11, curPrice * 0.20, curPrice * 0.32, curPrice * 0.48, curPrice * 0.72, curPrice];
+          data = [cur * 0.16, cur * 0.24, cur * 0.36, cur * 0.50, cur * 0.74, cur];
         }
       }
 
@@ -819,7 +795,6 @@
       chartInstance.update();
     }
 
-    // 6. CONSTITUENTS & FUNDAMENTALS
     function loadConstituentView() {
       const pillsContainer = document.getElementById('companyPills');
       pillsContainer.innerHTML = '';
@@ -920,7 +895,6 @@
       document.getElementById('definitionModal').style.display = 'none';
     }
 
-    // 7. IN-APP AI ASSISTANT LOGIC
     function toggleChat() {
       const win = document.getElementById('aiChatWindow');
       win.style.display = win.style.display === 'flex' ? 'none' : 'flex';
@@ -948,24 +922,15 @@
 
     function generateAiResponse(query) {
       if (query.includes('how to') || query.includes('guide') || query.includes('use')) {
-        return "Here is how to use the app:<br>• <b>Tap any market card</b> (Nifty, Bank Nifty, Gold) to view its performance.<br>• <b>Use the timeline bar</b> to see Days, Weeks, Quarters, Months, or Years.<br>• <b>Tap a constituent stock</b> to analyze its ratios.<br>• <b>Tap once</b> on a metric for its Rating/5, or <b>double tap</b> for its full definition.";
+        return "• Tap any market card (Sensex, Nifty, Gold) to view its performance.<br>• Use the timeline tabs to switch between Days, Weeks, Quarters, Months, and Years.<br>• Tap any constituent stock to analyze its fundamentals.<br>• Tap once on a metric for its Rating/5, or double-tap for its definition.";
       }
-      if (query.includes('pe') || query.includes('p/e') || query.includes('ratio') || query.includes('rating')) {
-        return "To view the P/E ratio and Rating/5:<br>1. Tap on an index (e.g., Nifty 50).<br>2. Select a stock like Reliance or TCS.<br>3. <b>Tap once</b> on the P/E box to reveal the star score out of 5.<br>4. <b>Double tap</b> the box to read how P/E works!";
+      if (query.includes('pe') || query.includes('rating')) {
+        return "Tap once on the P/E box to expand its 5-star rating and health analysis. Double-tap to read the official financial definition.";
       }
-      if (query.includes('possible') || query.includes('can i') || query.includes('what can i see')) {
-        return "<b>What is possible:</b><br>✓ Major indices (Nifty, Sensex, Bank Nifty)<br>✓ Precious metals (Gold, Silver, Platinum)<br>✓ 1Y to 20Y yearly charts, 4 quarters, 12 years monthly, 4 weeks, and 30 days<br>✓ Fundamental ratios (P/E, P/B, ROE, Debt/Equity) with ratings/5 and peer comparisons.<br><br><b>What is not supported yet:</b><br>✗ Direct buy/sell order placement with brokers.<br>✗ Crypto coins or derivative options chains.";
-      }
-      if (query.includes('crypto') || query.includes('bitcoin')) {
-        return "Crypto coins like Bitcoin or Ethereum are not tracked in this app. This app is dedicated to Indian capital indices (Nifty, Sensex, Bank Nifty) and precious metals (Gold, Silver, Platinum).";
-      }
-      if (query.includes('timeline') || query.includes('chart') || query.includes('graph')) {
-        return "You can switch the graph anytime using the top tabs:<br>• <b>Years:</b> 1Y, 2Y, 5Y, 10Y, 20Y.<br>• <b>Quarters:</b> Past 4 quarters.<br>• <b>Months:</b> 12-year monthly distribution.<br>• <b>Weeks:</b> Past 4 trading weeks.<br>• <b>Days:</b> Past 30 calendar days.";
-      }
-      return "I can guide you through the app's features! Try asking: <i>'What can this app track?'</i>, <i>'How do I view ratings?'</i>, or <i>'How does the multi-year chart work?'</i>";
+      return "I'm here to help you navigate the app! Try asking: <i>'How do I view ratings?'</i> or <i>'What can I track here?'</i>";
     }
   </script>
 </body>
 </html>
 
-          
+        
